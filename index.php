@@ -1,5 +1,5 @@
 <?php
-const BR= '<br>';
+defined('BR') OR define('BR','<br>');
 const HR= '<hr>';
 
 function pre_r($array){
@@ -292,5 +292,109 @@ function getage($item){
 $results= array_map( 'getage',$people);
 echo sort($results);
 pre_r(sort($results));
-echo pre_r($results)
+echo pre_r($results);
+echo HR;
+echo  BR; 
+//it is finds whether a variale is a number or numeric string
+echo '30'." ".'is_numeric()';
+echo  BR; 
+$numbers=array(200 ,20,'43',null,'jackon');
+foreach ($numbers as $key => $value) {
+    if(is_numeric($value)){
+        echo var_export($value).'is numeric'. BR;
+    }
+    else {
+        echo var_export($value).'is not numeric'. BR;
+
+    }
+}
+echo HR;
+echo  BR; 
+//it returns a value with its representation bassicly whet is on the page above
+echo '31'." ".'Var_export(value)';
+echo  BR; 
+$name='jackon';
+echo var_export($name);
+//'jackon'-output
+echo HR;
+echo  BR; 
+//shifts an array off the beggining of an array
+echo '32'." ".'array_shify(array)';
+echo  BR; 
+$stack=array('banana','orange','apple','mango');
+
+$fruit=array_shift($stack);
+echo $fruit;
+
+pre_r($stack);
+echo HR;
+echo  BR; 
+//checks whether a givesn name constant exists and returns a bool
+echo '33'." ".'defined(value)';
+echo  BR; 
+echo defined('BR')?'Yes':'NO';
+echo HR;
+echo  BR; 
+//used to form constant variables with their values
+echo '34'." ".'define(name,value)';
+echo  BR; 
+defined('BR') OR define('BR','<br>');
+echo HR;
+echo  BR; 
+//checks if a given string is a directory or not
+echo '35'." ".'is_dir()';
+echo BR;
+
+echo is_dir('D:\php\notes')?'yes':'no';
+echo HR;
+echo  BR; 
+//converts json string into php array
+echo '36'." ".'json_decode()';
+echo BR;
+$json='{"A":1,"V":2,"K":3,"I":4,"R":5}';
+pre_r(json_decode($json));
+echo HR;
+echo  BR; 
+//used to redirect to a spacified page
+echo '37'." ".'header()';
+echo BR;
+//header('location:index.php');
+//this will redirect the user in  5 seconds
+//header('refresh:5');
+echo HR;
+echo  BR; 
+//used to convert a string to uppercase
+echo '38'." ".'strtoupper()';
+echo BR;
+echo strtoupper('hello');
+echo HR;
+echo  BR; 
+//returns all the array values in an array
+echo '39'." ".'array_values()';
+echo BR;
+$names=array('a'=>'jackon','b'=>'tervor','c'=>'dev','d'=>'ronald');
+pre_r(array_values($names));
+echo HR;
+echo  BR; 
+//calculates the md5 hash of a string
+//returns a character as a 32-character hexadecimal number 
+echo '40'." ".'md5()';
+echo BR;
+$image='orange pepper_7.jpg';
+echo md5($image);
+//c3c5961464633080f3d3357894f99db9-will be the output
+echo HR;
+echo  BR; 
+//checks if a method exists in a class
+echo '41'." ".'method_exists()';
+echo  BR; 
+class Human{
+    public function eat(){
+    }
+        
+    }
+$i=new Human;
+
+echo method_exists($i,'eat')?'yes':'no';
+//yes-will be the output
 ?>
