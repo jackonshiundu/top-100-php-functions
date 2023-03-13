@@ -487,9 +487,9 @@ function favourite_games($games,$type,$year)
     echo "I love to play $type   $games games since  $year";
 }
 $function_name='favourite_games';
-$parameters=array('board','scarabble','2020');
+$parameters=array('board','scrabble','2020');
 call_user_func_array($function_name,$parameters);
-//I love to play scarabble board games since 2020 is the output
+//I love to play scrabble board games since 2020 is the output
 echo HR;
 echo  BR; 
 //opens a file or url
@@ -507,5 +507,130 @@ $time_end=microtime(true);
 $time_elapsed=$time_end-$timestart;
 echo "Wasted $time_elapsed";
 //will be he output Wasted 3.0066070556641
+echo BR;
+echo HR;
+echo  BR; 
+//closes an open file file pointer and returns true on success or false for failure
+echo '51'." ".'fclose()';
+echo BR;
+$file=fopen('newfile.txt','w');
+fwrite($file,'Hello World');
+fclose($file);
+echo BR;
+
+echo HR;
+echo  BR; 
+//finds whether the type of a variable is an integer and returns either true or false
+echo '52'." ".'is_int()';
+echo BR;
+$nums=array('23',34,null,'30.4',true,false);
+echo '<pre>';
+foreach ($nums as $value) {
+    echo "is_int(";
+    var_export($value);
+    echo ")=";
+    var_dump(is_int($value));
+}
+/* is_int('23')=bool(false)
+is_int(34)=bool(true)
+is_int(NULL)=bool(false)
+is_int('30.4')=bool(false)
+is_int(true)=bool(false)
+is_int(false)=bool(false)--is the output */
+echo HR;
+echo  BR; 
+//it checks if the string provided is a file or not
+echo '53'." ".'is_file()';
+echo BR;
+var_dump(is_file('D:\php\notes\php21.docx'));
+//bool(true)-it is a file since we just formed it in the same directory 
+echo HR;
+echo  BR; 
+//used to extract the slice of the array-the numbers are counting from zero
+echo '54'." ".'array_slice()';
+echo BR;
+$cards=array('dice','hearts','diamond','jack','flower');
+$chunk=array_slice($cards,2,4);
+pre_r($chunk);
+/* (
+    [0] => diamond
+    [1] => jack
+    [2] => flower
+) -is the output*/
+echo HR;
+echo  BR; 
+//capitalizes the first letter of a string
+echo '55'." ".'ucfirst()';
+echo BR;
+$name='jackon shiundu';
+echo ucfirst($name);
+$name='JACKON SHIUNDU';
+echo BR;
+echo ucfirst(strtolower($name));
+//Jackon shiundu
+//Jackon shiundu-is the output
+echo HR;
+echo  BR; 
+//guesses the interger value of a variable
+echo '56'." ".'intval()';
+echo BR;
+$values=array(45,5.6,'67',false,9,'-43','+42',null,'042',true);
+echo '<pre>';
+foreach ($values as $value) {
+   echo  intval($value);echo BR;
+}
+/* 45
+5
+67
+1
+9
+-43
+42
+0
+42-is the output */
+echo HR;
+echo  BR; 
+//repeats the string as spacified by the second parameter
+echo '57'." ".'str_repeat()';
+echo BR;
+echo str_repeat('__-#$-->',10).BR;
+/* __-#$-->__-#$-->__-#$-->__-#$-->__-#$-->__-#$-->__-#$-->__-#$-->__-#$-->__-#$-->-is the output */
+echo HR;
+echo  BR; 
+//used to  create a storable representation of a value
+echo '58'." ".'serialize()';
+echo BR;
+//s:size:value
+echo serialize('Jackon shiundu').BR;//s:14:"Jackon shiundu";
+echo serialize(10).BR;//i:10;
+echo serialize(array('name'=>'Jackon','school'=>'MKU','city'=>'Nairobi'));//a:3:{s:4:"name";s:6:"Jackon";s:6:"school";s:3:"MKU";s:4:"city";s:7:"Nairobi";}
+echo HR;
+echo  BR; 
+//filters elements of an array using a callback function
+echo '59'." ".'array_filter()';
+echo BR;
+function filter($value){
+    return ($value===44);
+}
+$values=array(44,5.6,'67',false,9,44,'+42',null,'042',true);
+
+$result=array_filter($values,'filter');
+pre_r($values);
+pre_r($result);
+/* (
+    [0] => 44
+    [5] => 44
+)-result */
+echo HR;
+echo  BR; 
+//is used to assign values from an array to the list of variables in one operation 
+echo '60'." ".'list()';
+echo BR;
+$arr=array('Apple','Dog','Rose');
+list($a,$b,$c)=$arr;
+echo "I have fruit $a","I have pet $b","I have flower $c".BR;//I have fruit AppleI have pet DogI have flower Rose-will be the output
+//to get the second value in the array
+list(,$b,)=$arr;
+echo $b//Dog
 
 ?>
