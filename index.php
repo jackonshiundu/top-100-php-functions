@@ -397,4 +397,115 @@ $i=new Human;
 
 echo method_exists($i,'eat')?'yes':'no';
 //yes-will be the output
+echo HR;
+echo  BR; 
+//write data to a file 
+//its identical to calling fopen() fwrite() fclose()
+//LOCK_EX parameter prevents other people from writing
+echo '41'." ".'file_put_contents()';
+echo BR;
+$content='It is a good day to die';
+file_put_contents('cheat-code.txt',$content);
+$more ='but we are not dieing';
+file_put_contents('cheat-code.txt',$more,FILE_APPEND |LOCK_EX);
+$current=file_get_contents('cheat-code.txt');
+echo $current;
+$current .='(, HELLO EVERYONE)';
+echo $current;
+echo HR;
+echo  BR; 
+//strips other characters from the end of a string
+echo '42'." ".'rtrim()';
+echo BR;
+$string='We are all one ';
+var_dump($string);
+echo BR;
+$newString=rtrim($string);
+var_dump($newString);
+$masterString=rtrim($newString ,'one');
+var_dump($masterString);
+echo HR;
+echo  BR; 
+//removes the last value of an array
+echo '43'." ".'array_pop()';
+echo BR;
+$cards=array('spades','hearts','clubs','diamond');
+pre_r($cards);
+$card=array_pop($cards);
+pre_r($cards);
+echo HR;
+echo  BR; 
+//deletes a file and return boolean id deleted or not
+echo '44'." ".'unlink()';
+echo BR;
+echo unlink('cheat-code.txt')?'deleted ':'not deleted';
+echo HR;
+echo  BR; 
+//returns the trailing name of a path without returning the entire path
+echo '45'." ".'basename()';
+echo BR;
+$dir='D:\php\notes\php1.docx';
+echo basename($dir);
+echo BR;
+//php1.docx-is the output
+echo basename($dir,'.docx');
+//php1-is the output
+echo HR;
+echo  BR; 
+//converts unix path to absolute windows path
+echo '46'." ".'realpath()';
+echo BR;
+$dir='\php\notes';
+echo realpath($dir);
+//D:\php\notes-will be the output
+echo HR;
+echo  BR; 
+//it calls the callback given by the first parameter
+echo '47'." ".'call_user_func()';
+echo BR;
+function favourite_game($game,$type){
+    echo "I love $game  is is my favourite $type of game";
+}
+call_user_func('favourite_game','Witcher3','XBOX 360');
+
+/* class Cards{
+    public function pick_card(){
+        $cards=array('King','Queen','Jack','Ace','Ten');
+        echo $cards[array_rand($cards)];
+    }
+}
+call_user_func(array('Cards','pick_card'));
+call_user_func('Cards::pick_card'); */
+//I love Witcher3 is is my favourite XBOX 360 of game-is the output
+echo HR;
+echo  BR; 
+//call a callback with an array of parameters
+echo '48'." ".'call_user_func_array()';
+echo BR;
+function favourite_games($games,$type,$year)
+{
+    echo "I love to play $type   $games games since  $year";
+}
+$function_name='favourite_games';
+$parameters=array('board','scarabble','2020');
+call_user_func_array($function_name,$parameters);
+//I love to play scarabble board games since 2020 is the output
+echo HR;
+echo  BR; 
+//opens a file or url
+echo '49'." ".'fopen()';
+$file=fopen("names.txt","r");
+echo BR;
+echo HR;
+echo  BR; 
+//returns the current unix timestamp with micro -seconds
+echo '50'." ".'microtime()';
+//setting the true value returns a sort instead of a string
+$timestart=microtime(true);
+usleep(3000000);//2 seconds ,i micro second =1,000,000 micro seconds
+$time_end=microtime(true);
+$time_elapsed=$time_end-$timestart;
+echo "Wasted $time_elapsed";
+//will be he output Wasted 3.0066070556641
+
 ?>
