@@ -631,6 +631,8 @@ list($a,$b,$c)=$arr;
 echo "I have fruit $a","I have pet $b","I have flower $c".BR;//I have fruit AppleI have pet DogI have flower Rose-will be the output
 //to get the second value in the array
 list(,$b,)=$arr;
-echo $b//Dog
+echo $b.BR;//Dog
 
+$names=['jackon','shiundu'];
+pre_r($names);
 ?>
