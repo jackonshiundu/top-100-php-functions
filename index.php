@@ -980,10 +980,102 @@ $keywords = array(
 );
 ksort($keywords);
 pre_r($keywords);
-<!-- Array
+/* Array
 (
-    [f] => Feather
-    [m] => Monther
-    [x] => xylem
-    [z] => zed
-)-will be the output -->
+[f] => Feather
+[m] => Monther
+[x] => xylem
+[z] => zed
+)-will be the output*/
+echo HR;
+echo BR;
+//returns an array with elements in reverse order
+echo '91' . " " . 'array_reverse()' . BR;
+$keywords = array(
+    'm' => 'Monther',
+    'f' => 'Feather',
+    'z' => 'zed',
+    'x' => 'xylem',
+);
+$nkeywprds = array_reverse($keywords);
+//for a numeric array if you pass a second parameter true then it will preserve the  the keys
+pre_r($nkeywprds);
+/* Array
+(
+[x] => xylem
+[z] => zed
+[f] => Feather
+[m] => Monther
+)-is the output */
+echo HR;
+echo BR;
+//converts the first byte of a string to a value between 0-255
+//is the opposite of chr()
+echo '92' . " " . 'ord()' . BR;
+echo ord('C'); //67
+echo HR;
+echo BR;
+//generates a unique id string
+echo '93' . " " . 'uniqid()' . BR;
+echo uniqid('Jackon-');
+//the second parameter true can be used if you want to get a long id
+//Jackon-641753cd71a16-s tha output
+echo HR;
+echo BR;
+//translates characters or replaces substrings
+echo '94' . " " . 'strtr()' . BR;
+$school = 'Mount kenya uni';
+echo strtr($school, 'u', 'a');
+echo HR;
+echo BR;
+//computes the diffrence of arrays
+echo '95' . " " . 'array_diff()' . BR;
+//returns the values of the first array that are not in the second array
+$animals = [".", "..", "algator", "frogs"];
+$animal1 = [".", ".."];
+$newarr = array_diff($animals, $animal1);
+pre_r($newarr);
+/*  Array
+(
+[2] => algator
+[3] => frogs
+)-is the output */
+echo HR;
+echo BR;
+//sets whitch php errors are reported
+echo '96' . " " . 'error_reporting()' . BR;
+
+echo HR;
+echo BR;
+//rounds a fraction up
+echo '97' . " " . 'cei()' . BR;
+echo ceil(34.56) . BR;
+echo ceil(-34.56) . BR;
+/* 35
+-34 -is the output*/
+echo HR;
+echo BR;
+//URL encodes strings
+echo '98' . " " . 'urlencode()' . BR;
+$userquery = "i am very tired";
+$string = 'search,php?query=' . urlencode($userquery);
+echo $string;
+//search,php?query=i+am+very+tired-is the output
+echo HR;
+echo BR;
+//gets the minimal number put of a set of numbers
+echo '99' . " " . 'min()' . BR;
+echo min(3, 4, 5, 6); //3
+echo HR;
+echo BR;
+//prints out the array
+echo '100' . " " . 'print_r()' . BR;
+$animals = [".", "..", "algator", "frogs"];
+print_r($animals);
+/* [0] => .
+[1] => ..
+[2] => algator
+[3] => frogs--is the output */
+echo HR;
+
+echo "<h1>Happy Hacking Fam.Jackon Code.2023</h1>";
