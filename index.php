@@ -808,57 +808,182 @@ echo BR;
 echo '76' . " " . 'unserialize()' . BR;
 $animals = ['Lion', 'Hyenas', 'Rabbit', 'dogs'];
 $sdata = serialize($animals);
-echo $sdata.BR;
+echo $sdata . BR;
 echo pre_r(unserialize($sdata));
 /* a:4:{i:0;s:4:"Lion";i:1;s:6:"Hyenas";i:2;s:6:"Rabbit";i:3;s:4:"dogs";}
 Array
 (
-    [0] => Lion
-    [1] => Hyenas
-    [2] => Rabbit
-    [3] => dogs 
+[0] => Lion
+[1] => Hyenas
+[2] => Rabbit
+[3] => dogs
 )-is the output respectively*/
 echo HR;
 echo BR;
 //splits strings by regular expressions and returns an array of values
 echo '77' . " " . 'preg_split()' . BR;
-$words="Nature is a really,bad+thing-when it come to natural calamities";
+$words = "Nature is a really,bad+thing-when it come to natural calamities";
 //\s will split by space
-pre_r(preg_split("![\s,+-]!",$words));
+pre_r(preg_split("![\s,+-]!", $words));
 /*  Array
 (
-    [0] => Nature
-    [1] => is
-    [2] => a
-    [3] => really
-    [4] => bad
-    [5] => thing
-    [6] => when
-    [7] => it
-    [8] => come
-    [9] => to
-    [10] => natural
-    [11] => calamities
-    )-is the output */
-    echo HR;
-    echo BR;
-    //gets the type of an array
+[0] => Nature
+[1] => is
+[2] => a
+[3] => really
+[4] => bad
+[5] => thing
+[6] => when
+[7] => it
+[8] => come
+[9] => to
+[10] => natural
+[11] => calamities
+)-is the output */
+echo HR;
+echo BR;
+//gets the type of an array
 echo '78' . " " . 'gettype()' . BR;
-$variables=array(array(),100,'hello',2.1,null);
+$variables = array(array(), 100, 'hello', 2.1, null);
 foreach ($variables as $key => $value) {
-    echo gettype($value).',';
+    echo gettype($value) . ',';
 }
 //array,integer,string,double,NULL,-is the output
 echo HR;
 echo BR;
 //gets the type of an array
 echo '79' . " " . 'strpos()' . BR;
-$words="Nature is a really,bad+thing-when it come to natural calamities";
-echo strpos($words,'when');
+$words = "Nature is a really,bad+thing-when it come to natural calamities";
+echo strpos($words, 'when');
 //29 is the output
 echo HR;
 echo BR;
 //gets the type of an php version and compare s with the value given in the second parameter and evaluates depending on the comparison value
 echo '80' . " " . 'version_compare()' . BR;
-echo PHP_VERSION.BR;
-echo version_compare(PHP_VERSION,'7.0.0','>=')?'PHP_VERSION is '.PHP_VERSION:'Not garter that 7.0.0';
+echo PHP_VERSION . BR;
+echo version_compare(PHP_VERSION, '7.0.0', '>=') ? 'PHP_VERSION is ' . PHP_VERSION : 'Not garter that 7.0.0';
+echo HR;
+echo BR;
+//pushes one or more elements into the end of an array
+echo '81' . " " . 'array_push()' . BR;
+$medicine = array('panadon', 'flagin', 'paracitamon');
+pre_r($medicine);
+array_push($medicine, 'diclophena', 'painkiller');
+pre_r($medicine);
+/* Array
+(
+[0] => panadon
+[1] => flagin
+[2] => paracitamon
+)
+Array
+(
+[0] => panadon
+[1] => flagin
+[2] => paracitamon
+[3] => diclophena
+[4] => painkiller
+)-is the output */
+echo HR;
+echo BR;
+//prounds down decimal numbers
+echo '82' . " " . 'floor()' . BR;
+echo floor(20.34) . BR;
+echo floor(-20.94);
+/* 20
+-21-is the output */
+echo HR;
+echo BR;
+//pases about any English textual date into unix timestamp
+echo '83' . " " . 'strtotime()' . BR;
+echo strtotime('now') . BR;
+echo date('M-Y-D', strtotime('tomorrow'));
+/* 1679246354
+Mar-2023-Mon-wound be the output */
+echo HR;
+echo BR;
+//converts special characters to html entities
+echo '84' . " " . 'htmlspecialchars()' . BR;
+
+$html = '<h1>Hello mama</h1>';
+echo $html;
+echo htmlspecialchars($html);
+/* Hello mama
+<h1>Hello mama</h1> -s the output */
+echo HR;
+echo BR;
+//gets the value of the configuration option
+echo '85' . " " . 'ini_get()' . BR;
+//precision=14- this is from php.ini file
+echo 'precision=' . ini_get('precision');
+//precision=14-is the output
+echo HR;
+echo BR;
+//sets the value of configuration options
+echo '86' . " " . 'ini_set()' . BR;
+//precision=14- this is from php.ini file
+ini_set('precision', '15');
+echo 'precision=' . ini_get('precision');
+//precision=15-is the output
+echo HR;
+echo BR;
+//generates a single bit string from a number, with refernce from ASCII table
+echo '87' . " " . 'chr()' . BR;
+echo chr(85) . BR; //U
+echo chr(70) . BR; //F
+echo chr(65); //A
+echo HR;
+echo BR;
+//checks what kind of Php extensions have been loaded
+echo '88' . " " . 'extension_loaded()' . BR;
+//mormally with cdm you type > php -m
+$extextion = array('dom', 'exif', 'fileinfo', 'npm', 'sql', 'filter');
+foreach ($extextion as $value) {
+    echo extension_loaded($value) ? "$value is loaded" . BR : "$value is not loaded" . BR;
+}
+/*     dom is loaded
+exif is loaded
+fileinfo is loaded
+npm is not loaded
+sql is not loaded
+filter is loaded-will be the output */
+echo HR;
+echo BR;
+//checks what kind of Php extensions have been loaded
+echo '89' . " " . 'is_bool()' . BR;
+$a = false;
+$c = true;
+$b = 1;
+if (is_bool($a) === true) {
+    echo var_export($a) . "Is a boolean" . BR;
+}
+if (is_bool($b) === true) {
+    echo var_export($b) . "Is a boolean" . BR;
+} else {
+    echo var_export($b) . 'Not a boolean' . BR;
+}
+if (is_bool($c) === true) {
+    echo var_export($c) . "Is a boolean" . BR;
+}
+/* falseIs a boolean
+1Not a boolean
+trueIs a boolean-is the output*/
+echo HR;
+echo BR;
+//sorts an array by key takes in an array
+echo '90' . " " . 'ksort()' . BR;
+$keywords = array(
+    'm' => 'Monther',
+    'f' => 'Feather',
+    'z' => 'zed',
+    'x' => 'xylem',
+);
+ksort($keywords);
+pre_r($keywords);
+<!-- Array
+(
+    [f] => Feather
+    [m] => Monther
+    [x] => xylem
+    [z] => zed
+)-will be the output -->
